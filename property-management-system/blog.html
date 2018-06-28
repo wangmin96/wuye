@@ -1,0 +1,326 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Blog</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery-1.11.0.min.js"></script>
+<!-- Custom Theme files -->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }>
+</script>
+<meta name="keywords" content="Auction Responsive web template, Bootstrap Web Templates, Flat Web Templates, AndriodCompatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<!--Google Fonts-->
+<!-- start-smoth-scrolling -->
+	<link rel="stylesheet" href="css/calendar.css">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/calendar.js"></script>
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+	</script>
+	<script>
+        function weather() {
+            //创建对象
+            var xhr = new XMLHttpRequest();
+            //设置请求行（get请求数据写在url后面）
+            xhr.open("get","http://wthrcdn.etouch.cn/weather_mini?city=哈尔滨");
+            //设置请求头（get请求可以省略，post请求不发送也可以省略）
+            //注册回调函数
+            xhr.onload = function () {
+                if (xhr.readyState==4&&xhr.status==200){
+                    var readWeather = JSON.parse(xhr.responseText);
+                    var val=readWeather.data.forecast[0].fengli;//获取name的值
+                    var str=val.replace('<![CDATA[','');//替换
+                    var str2=str.replace('<','');//替换
+                    var str3=str2.replace(']]>','');
+                    readWeather.data.forecast[0].fengli=str3;//把新的值赋给name字段
+                    var html = "";
+                    html+="<table>";
+                    html+="<tr>";
+                    html+="<tr>";
+                    html+="<td>"+"温度："+"</td>";
+                    html+="<td>"+readWeather.data.wendu+"℃</td>";
+                    html+="</tr>";
+                    html+="<tr>";
+                    html+="<td>"+"风力："+"</td>";
+                    html+="<td>"+readWeather.data.forecast[0].fengli+"</td>";
+                    html+="</tr>";
+                    html+="<tr>";
+                    html+="<td>"+"风向："+"</td>";
+                    html+="<td>"+readWeather.data.forecast[0].fengxiang+"</td>";
+                    html+="</tr>";
+                    html+="<tr>";
+                    html+="<td>"+"温度："+"</td>";
+                    html+="<td>"+readWeather.data.forecast[0].low+"~"+readWeather.data.forecast[0].high+"</td>";
+                    html+="</tr>";
+                    html+="<tr>";
+                    html+="<td>"+"天气："+"</td>";
+                    html+="<td>"+readWeather.data.forecast[0].type+"</td>";
+                    html+="</tr>";
+                    html+="<tr>";
+                    html+="<tr>";
+                    html+="<td colspan='2'>"+readWeather.data.ganmao+"</td>";
+                    html+="</tr>";
+                    html+="</table>";
+                    console.log(html);
+                    document.querySelector("#weather").innerHTML = html;
+                    $type = readWeather.data.forecast[0].type;
+                    if ($type.substring(2,1)=="云"||$type.substring(0,1)=="阴"){
+                        var wImg = "";
+                        wImg+="<div class='card-color color-cloud'><div class='cloud'></div></div>";
+                        document.querySelector("#weatherImg").innerHTML = wImg;
+					}else if ($type.substring(1,1)=="雨"){
+                        var wImg = "";
+                        wImg+="<div class='card-color color-rain'><div class='rain'></div></div>";
+                        document.querySelector("#weatherImg").innerHTML = wImg;
+					}else if ($type.substring(1,1)=="雪"){
+                        var wImg = "";
+                        wImg+="<div class='card-color color-snow'><div class='snow'></div></div>";
+                        document.querySelector("#weatherImg").innerHTML = wImg;
+                    }else if ($type.substring(0,3)=="雷阵雨"){
+                        var wImg = "";
+                        wImg+="<div class='card-color color-storm'><div class='storm'></div></div>";
+                        document.querySelector("#weatherImg").innerHTML = wImg;
+                    }else if ($type.substring(0,1)=="晴"){
+                        var wImg = "";
+                        wImg+="<div class='card-color color-sunny'><div class='sunny'></div></div>";
+                        document.querySelector("#weatherImg").innerHTML = wImg;
+                    }
+                }else {
+                    document.querySelector("h3").innerHTML = "该城市不存在或未在数据库内";
+                }
+            }
+            //请求主体发送（get请求为空，或者写null，post请求数据写在这里，如果没有数据，直接为空或者写null）
+            xhr.send(null);
+            //如果需要像HTML表单那样post数据，需要   .setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        }
+	</script>
+</head>
+<body onload="weather()">
+<!-- //end-smoth-scrolling -->
+<!--header start here-->
+<div class="header">
+	<div class="container-fluid">
+		<div class="header-main">
+			<div class="logo">
+				<a href="index.html"><h2>PMS</h2></a>
+			</div>
+			<div class="head-right">
+				<div class="top-nav">
+					<span class="menu"> <img src="images/icon.png" alt=""/></span>
+					<ul class="res">
+						<li><a href="index.html">首页</a></li>
+						<li><a href="about.html">关于我们</a></li>
+						<li><a class="active" href="blog.html">新闻</a></li>
+						<li><a href="contact.html">联系我们</a></li>
+						<div class="clearfix"> </div>
+					</ul>
+					<!-- script-for-menu -->
+					<script>
+                        $( "span.menu" ).click(function() {
+                            $( "ul.res" ).slideToggle( 300, function() {
+                                // Animation complete.
+                            });
+                        });
+					</script>
+					<!-- /script-for-menu -->
+				</div>
+				<div class="social">
+					<ul >
+						<li><a class="fa" href="#"> </a></li>
+						<li><a class="tw" href="#"> </a></li>
+						<li><a class="p" href="#"> </a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+</div>
+<!--header end here-->
+<!--blog start here-->
+<div class="blog">
+	<div class="container">
+		<div class="blog-main">
+			<div class="blog-top">
+				<h3>每日新闻</h3>
+				<p>The daily news follows in the footsteps of the world</p>
+			</div>
+			<div class="col-md-9 blog-left">
+				<div class="blog-grids">
+					<div class="blog-detail" style="height: 210px">
+						<div id="weatherImg" class="card" style="float: right">
+
+						</div>
+						<div id="weather">
+						</div>
+					</div>
+				</div>
+				<div class="blog-grids">
+					<div class="blog-detail" style="height: 210px">
+						<a href="http://house.southcn.com/f/2018-06/27/content_182373491.htm"><img src="images/01.jpg" alt="" style="width: 300px;height:180px;float: right"></a>
+						<div style="padding: 20px">
+							<a href="http://house.southcn.com/f/2018-06/27/content_182373491.htm"><h3>中航善达、中航物业董事长石正林参加中国国际物业管理高峰论坛</h3></a>
+							<h4>在<span class="blog-clr">6月22日</span> ，以“创新引领变革 效率驱动价值“为主题的2018第三届中国国际物业管理高峰论坛在成都通威国际中心举办。 <span class="blog-clr"> 中国物业管理协会会长沈建忠</span>领军企业家以及行业精英愈800位重磅嘉宾齐聚蓉城，围绕行业管理质量升级、商业模式创新、智慧社区建设、激发行业新动能。</h4>
+						</div>
+					</div>
+				</div>
+				<div class="blog-grids">
+					<div class="blog-detail" style="height: 210px">
+						<a href="http://news.iwuye.com/QiYe/201806/117922.shtml"><img src="images/02.jpg" alt="" style="width: 300px;height:180px; float: right"></a>
+						<div style="padding: 20px">
+							<a href="http://news.iwuye.com/QiYe/201806/117922.shtml"><h3>山东省潍坊市住建局物业科及物业协会领导参观开元华庭</h3></a>
+							<h4>物业服务已成为地产价值增值的有利体现，开元物业中部大区将继续以更专业、贴心的工作夯实基础业务，让业主尽情享受酒店式的服务生活。</h4>
+						</div>
+					</div>
+				</div>
+				<div class="blog-grids">
+					<div class="blog-detail" style="height: 210px">
+						<a href="http://news.iwuye.com/QiYe/201806/117919.shtml"><img src="images/03.jpg" alt="" style="width: 300px;height:180px;float: right"></a>
+						<div style="padding: 20px">
+							<a href="http://news.iwuye.com/QiYe/201806/117919.shtml"><h3>开元物业中部大区开展“父爱粽如山”系列主题活动</h3></a>
+							<h4>本报讯（孟丹）在父亲节、端午节双节来临之际，开元物业中部大区开展了“父爱粽如山”系列活动。此次活动为广大业主精心准备了亲子包粽子、等项目.业主张先生开心的表示：这个父亲节虽然没有儿女的陪伴，但是他一点也不孤单，又吃粽子又领礼品，和邻居一起度过的节日更有意义。</h4>
+					</div>
+				</div>
+				<div class="blog-grids">
+					<div class="blog-detail" style="height: 210px">
+						<a href="http://news.iwuye.com/Pm/201806/117916.shtml"><img src="images/04.jpg" alt="" style="width: 300px;height:180px;float: right"></a>
+						<div style="padding: 20px">
+							<a href="http://news.iwuye.com/Pm/201806/117916.shtml"><h3>深圳首例：电动车起火烧空房屋，物业房东被罚过万，租客拘留</h3></a>
+							<h4> 目前，过失引起火灾的住户曾某、乐某分别被行政拘留15日，房东被处18300元罚款及停租3个月，同时小区管理处被处1万元罚款。
+								事后，曾某痛悔地说，当时看到电动车起火，但是已经来不及扑灭了,现在自己非常后悔，电动车在家里充电太危险了，再也不敢了,希望其他人也不要这样做。</h4>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 blog-right">
+				<div class="blog-cate">
+					<div id="calendar" class="calendar"></div>
+				</div>
+			<div class="blog-post">
+				<h3>Recent Projects</h3>
+				<div class="ftr-gd4-img">
+				    <div class="col-md-3 ftr-gd4-1"><a href="###"><img src="images/f1.jpg" alt=""></a></div>
+				    <div class="col-md-3 ftr-gd4-1"><a href="###"><img src="images/f2.jpg" alt=""></a></div>
+				    <div class="col-md-3 ftr-gd4-1"><a href="###"><img src="images/f3.jpg" alt=""></a></div>
+				    <div class="col-md-3 ftr-gd4-1"><a href="###"><img src="images/f4.jpg" alt=""></a></div>
+				  <div class="clearfix"> </div>
+				</div>
+				<div class="ftr-gd4-img">
+				    <div class="col-md-3 ftr-gd4-1"><a href="###"><img src="images/f5.jpg" alt=""></a></div>
+				    <div class="col-md-3 ftr-gd4-1"><a href="###"><img src="images/f6.jpg" alt=""></a></div>
+				    <div class="col-md-3 ftr-gd4-1"><a href="###"><img src="images/f7.jpg" alt=""></a></div>
+				    <div class="col-md-3 ftr-gd4-1"><a href="###"><img src="images/f8.jpg" alt=""></a></div>
+				  <div class="clearfix"> </div>
+				</div>
+				<div class="ftr-gd4-img">
+				    <div class="col-md-3 ftr-gd4-1"><a href="###"><img src="images/f9.jpg" alt=""></a></div>
+				    <div class="col-md-3 ftr-gd4-1"><a href="###"><img src="images/f10.jpg" alt=""></a></div>
+				    <div class="col-md-3 ftr-gd4-1"><a href="###"><img src="images/f11.jpg" alt=""></a></div>
+				    <div class="col-md-3 ftr-gd4-1"><a href="###"><img src="images/f12.jpg" alt=""></a></div>
+				  <div class="clearfix"> </div>
+				</div>
+			</div>
+			</div>
+		 <div class="clearfix"> </div>
+		</div>
+	</div>
+</div>
+<!--blog end here-->
+<!--footer start here-->
+<div class="footer">
+	<div class="container">
+		<div class="footer-main">
+			<div class="col-md-3 footer-grid">
+				<h3>关于公司</h3>
+				<p>PMS物业管理有限公司成立于2000年12月，是经工商部门批准成立的具有法人资格的有限责任公司，注册资金2000万元，是国家一级资质物业服务企业。公司已通过了ISO9001质量管理体系认证、ISO14001环境管理体系认证和OHSAS18001职业健康安全管理体系认证、食品安全管理体系认证和能源管理体系认证。</p>
+			</div>
+			<div class="col-md-3 footer-grid">
+				<h3>最近项目</h3>
+				<div class="ftr-sub-gd">
+					<div class="col-md-4 ftr-gd2-img">
+						<a href="#"><img src="images/s1.jpg" alt=""></a>
+					</div>
+					<div class="col-md-8 ftr-gd2-text">
+						<a href="#"><h4>北京五道口</h4></a>
+						<a href="#"><p>Mar 3rd,2015</p></a>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="ftr-sub-gd">
+					<div class="col-md-4 ftr-gd2-img">
+						<a href="#"><img src="images/s2.jpg" alt=""></a>
+					</div>
+					<div class="col-md-8 ftr-gd2-text">
+						<a href="#"><h4>北京五道口</h4></a>
+						<a href="#"><p>Mar 3rd,2015</p></a>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="ftr-sub-gd">
+					<div class="col-md-4 ftr-gd2-img">
+						<a href="#"><img src="images/s3.jpg" alt=""></a>
+					</div>
+					<div class="col-md-8 ftr-gd2-text">
+						<a href="#"><h4>北京五道口</h4></a>
+						<a href="#"><p>Mar 3rd,2015</p></a>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+			<div class="col-md-3 footer-grid">
+				<h3>底部导航</h3>
+				<ul>
+					<li><a href="index.html">首页</a></li>
+					<li><a href="about.html">关于我们</a></li>
+					<li><a href="blog.html">新闻</a></li>
+					<li><a href="contact.html">联系我们</a></li>
+					<li><a href="login.html">管理员入口</a></li>
+				</ul>
+			</div>
+			<div class="col-md-3 footer-grid">
+				<h3>项目展示</h3>
+				<div class="ftr-gd4-img">
+					<div class="col-md-3 ftr-gd4-1"><a href="#"><img src="images/f1.jpg" alt=""></a></div>
+					<div class="col-md-3 ftr-gd4-1"><a href="#"><img src="images/f2.jpg" alt=""></a></div>
+					<div class="col-md-3 ftr-gd4-1"><a href="#"><img src="images/f3.jpg" alt=""></a></div>
+					<div class="col-md-3 ftr-gd4-1"><a href="#"><img src="images/f4.jpg" alt=""></a></div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="ftr-gd4-img">
+					<div class="col-md-3 ftr-gd4-1"><a href="#"><img src="images/f5.jpg" alt=""></a></div>
+					<div class="col-md-3 ftr-gd4-1"><a href="#"><img src="images/f6.jpg" alt=""></a></div>
+					<div class="col-md-3 ftr-gd4-1"><a href="#"><img src="images/f7.jpg" alt=""></a></div>
+					<div class="col-md-3 ftr-gd4-1"><a href="#"><img src="images/f8.jpg" alt=""></a></div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="ftr-gd4-img">
+					<div class="col-md-3 ftr-gd4-1"><a href="#"><img src="images/f9.jpg" alt=""></a></div>
+					<div class="col-md-3 ftr-gd4-1"><a href="#"><img src="images/f10.jpg" alt=""></a></div>
+					<div class="col-md-3 ftr-gd4-1"><a href="#"><img src="images/f11.jpg" alt=""></a></div>
+					<div class="col-md-3 ftr-gd4-1"><a href="#"><img src="images/f12.jpg" alt=""></a></div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+</div>
+<!--footer end here-->
+</body>
+</html>
